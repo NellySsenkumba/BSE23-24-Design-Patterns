@@ -11,7 +11,7 @@ public class Salesperson implements Observer {
 
     @Override
     public void update(Product product) {
-        System.out.println(name + " : " + product.getName() + " has been added to cart");
+        System.out.print(name + " : " + product.getName() + " has been added to cart\n");
     }
 
 }

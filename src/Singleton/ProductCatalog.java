@@ -34,6 +34,12 @@ public class ProductCatalog implements Subject {
     public List<Product> getAllProducts() {
         return productList;
     }
+    
+    public List<Observer> getAllObservers() {
+        return observerList;
+    }
+
+
 
     @Override
     public void attach(Observer observer) {

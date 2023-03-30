@@ -38,6 +38,7 @@ public class ProductFactoryTest {
     public void testInvalidProductType() {
         MyProductFactory factory = new MyProductFactory();
         Product product = factory.create("InvalidType", "InvalidName", 0.0, "", 0);
+        product.equals(product);
 
     }
 

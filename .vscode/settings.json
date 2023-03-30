@@ -3,5 +3,6 @@
         "lib/**/*.jar",
         "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\hamcrest-core-1.3.jar",
         "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\junit-4.12.jar"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }
