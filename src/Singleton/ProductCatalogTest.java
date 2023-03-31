@@ -30,26 +30,30 @@ public class ProductCatalogTest {
 
     @Test
     public void testAddProductAddsProductToListwithSalessperson() {
-        ProductCatalog pc = ProductCatalog.getInstance();
-        Salesperson Mariam = new Salesperson("Mariam");
+        ProductCatalog test1 = new ProductCatalog();
+        Salesperson Ndagire = new Salesperson("Ndagire");
 
-        Product product = new Electronic("Laptop", 1999.99, "Macbook Pro", 5);
+        Product product = new Groceries("Tomatoes", 500, "RIpe", 7);
 
-        List<Product> productList = pc.getAllProducts();
+        List<Product> productList = test1.getAllProducts();
+        List<Observer> observerList = test1.getAllObservers();
+        
 
         // testing if the salesperson has been notified
         // obtaining notification from console
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(outputStream);
         System.setOut(printStream);
-        pc.attach(Mariam);
-        pc.addProduct(product);
+
+        test1.attach(Ndagire);
+        assertEquals(1, observerList.size());
+        test1.addProduct(product);
 
         String consoleOutput = outputStream.toString();
-        String expectedOutput = "Mariam : Laptop has been added to cart\n";
+        String expectedOutput = "Ndagire : Tomatoes has been added to cart\n";
         assertTrue(productList.contains(product)); // testing if product has been added to catalog
 
-        assertEquals(expectedOutput, consoleOutput);
+        assertEquals(expectedOutput, consoleOutput);// tests for the expected output of the console
 
     }
 
@@ -86,17 +90,17 @@ public class ProductCatalogTest {
 
     @Test
     public void testGetAllProductsReturnsAllProducts() {
-        ProductCatalog pc = ProductCatalog.getInstance();
-        List<Product> productList = pc.getAllProducts();
+        ProductCatalog catlog = new ProductCatalog();
+        List<Product> productList = catlog.getAllProducts();
         assertNotNull(productList);
-        assertEquals(4, productList.size());
+        assertEquals(3, productList.size());
     }
 
     @Test
     public void testGetAllObserversReturnsAllObservers() {
-        ProductCatalog pc = ProductCatalog.getInstance();
-        pc.attach(new Salesperson("Mariam"));
-        List<Observer> observerList = pc.getAllObservers();
+        ProductCatalog cart = new ProductCatalog();
+        cart.attach(new Salesperson("Mariam"));
+        List<Observer> observerList = cart.getAllObservers();
         assertNotNull(observerList);
         assertEquals(1, observerList.size());
     }

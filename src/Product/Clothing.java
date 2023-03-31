@@ -20,8 +20,8 @@ public class Clothing implements Product {
         this.name = name;
 
         this.price = price;
-        this.description=description;
-        this.quantity=quantity;
+        this.description = description;
+        this.quantity = quantity;
 
     }
 
