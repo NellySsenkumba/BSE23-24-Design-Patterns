@@ -10,13 +10,8 @@ public class ProductCatalog implements Subject {
     private static ProductCatalog instance = null;
     private List<Product> productList = new ArrayList<>();
     private List<Observer> observerList = new ArrayList<>();
-    
 
-    public ProductCatalog() {
-        // Initial products to the catalog
-        productList.add(new Electronic("Smartphone", 999.99, "14 pro max", 3));
-        productList.add(new Clothing("T-Shirt", 19.99, "Long sleeve", 10));
-        productList.add(new Groceries("Bananas", 2.99, "ripe", 50));
+    private ProductCatalog() {
     }
 
     public static ProductCatalog getInstance() {
@@ -34,12 +29,15 @@ public class ProductCatalog implements Subject {
     public List<Product> getAllProducts() {
         return productList;
     }
-    
+
+    public void detachAllProducts() {
+        productList.clear();
+    }
+
+    @Override
     public List<Observer> getAllObservers() {
         return observerList;
     }
-
-
 
     @Override
     public void attach(Observer observer) {
@@ -58,7 +56,12 @@ public class ProductCatalog implements Subject {
 
         }
 
+    }
 
+    // remove all Observers
+    @Override
+    public void detachAllObservers() {
+        observerList.clear();
     }
 
 }

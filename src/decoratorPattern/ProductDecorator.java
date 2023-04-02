@@ -1,33 +1,18 @@
 package decoratorPattern;
+
 import Product.Product;
 
-
-class ProductDecorator implements Product{
+abstract class ProductDecorator extends Product {
     Product product;
-    ProductDecorator(Product product){
+
+    ProductDecorator(Product product) {
         super();
-        this.product=product;
+        this.product = product;
+        this.setName(product.getName());
+        this.setDescription(product.getDescription());
+        this.setQuantity(product.getQuantity());
+        this.setPrice(product.getPrice());
 
-    }
-
-    @Override
-    public String getName() {
-        return product.getName();
-    }
-
-    @Override
-    public int getQuantity() {
-        return product.getQuantity();
-    }
-
-    @Override
-    public String getDescription() {
-        return product.getDescription();
-    }
-
-    @Override
-    public double getPrice() {
-        return product.getPrice();
     }
 
 }

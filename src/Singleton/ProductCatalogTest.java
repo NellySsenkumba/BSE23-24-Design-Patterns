@@ -30,14 +30,14 @@ public class ProductCatalogTest {
 
     @Test
     public void testAddProductAddsProductToListwithSalessperson() {
-        ProductCatalog test1 = new ProductCatalog();
+        ProductCatalog test1 = ProductCatalog.getInstance();
+        test1.detachAllObservers();
         Salesperson Ndagire = new Salesperson("Ndagire");
 
         Product product = new Groceries("Tomatoes", 500, "RIpe", 7);
 
         List<Product> productList = test1.getAllProducts();
         List<Observer> observerList = test1.getAllObservers();
-        
 
         // testing if the salesperson has been notified
         // obtaining notification from console
@@ -90,15 +90,19 @@ public class ProductCatalogTest {
 
     @Test
     public void testGetAllProductsReturnsAllProducts() {
-        ProductCatalog catlog = new ProductCatalog();
+        ProductCatalog catlog = ProductCatalog.getInstance();
+        catlog.detachAllProducts();
         List<Product> productList = catlog.getAllProducts();
+
+        
         assertNotNull(productList);
-        assertEquals(3, productList.size());
+        assertEquals(0, productList.size());
     }
 
     @Test
     public void testGetAllObserversReturnsAllObservers() {
-        ProductCatalog cart = new ProductCatalog();
+        ProductCatalog cart = ProductCatalog.getInstance();
+        cart.detachAllObservers();
         cart.attach(new Salesperson("Mariam"));
         List<Observer> observerList = cart.getAllObservers();
         assertNotNull(observerList);

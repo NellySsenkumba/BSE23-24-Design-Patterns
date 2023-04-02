@@ -6,14 +6,18 @@ public class GiftWrapping extends ProductDecorator {
 
     public GiftWrapping(Product product) {
         super(product);
+        updateDescription();
+        this.setPrice(wrap(product.getPrice()));
     }
 
-    double wrap(double price){
-        return price +2000.0;
+    double wrap(double price) {
+        return price + 2000.0;
     }
+
+
     @Override
-    public double getPrice() {
-        return wrap(product.getPrice());
+    public void updateDescription() {
+        this.setDescription(product.getDescription() + ", gift_wrapped");
     }
-    
+
 }
