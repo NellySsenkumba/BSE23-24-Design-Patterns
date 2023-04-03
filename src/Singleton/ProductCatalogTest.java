@@ -32,7 +32,7 @@ public class ProductCatalogTest {
     public void testAddProductAddsProductToListwithSalessperson() {
         ProductCatalog test1 = ProductCatalog.getInstance();
         test1.detachAllObservers();
-        Salesperson Ndagire = new Salesperson("Ndagire");
+        Salesperson Ndagire = new Salesperson("Ndagire","ssenkumbanelson.sn@gmail.com");
 
         Product product = new Groceries("Tomatoes", 500, "RIpe", 7);
 
@@ -60,7 +60,7 @@ public class ProductCatalogTest {
     @Test
     public void testAttach() {
         ProductCatalog pc = ProductCatalog.getInstance();
-        Salesperson Mariam = new Salesperson("Mariam");
+        Salesperson Mariam = new Salesperson("Mariam","ssenkumbanelson.sn@gmail.com");
 
         Product product = new Electronic("Laptop", 1999.99, "Macbook Pro", 5);
 
@@ -74,7 +74,7 @@ public class ProductCatalogTest {
     @Test
     public void testDetach() {
         ProductCatalog pc = ProductCatalog.getInstance();
-        Salesperson Mariam = new Salesperson("Mariam");
+        Salesperson Mariam = new Salesperson("Mariam","ssenkumbanelson.sn@gmail.com");
 
         Product product = new Electronic("Laptop", 1999.99, "Macbook Pro", 5);
 
@@ -103,7 +103,7 @@ public class ProductCatalogTest {
     public void testGetAllObserversReturnsAllObservers() {
         ProductCatalog cart = ProductCatalog.getInstance();
         cart.detachAllObservers();
-        cart.attach(new Salesperson("Mariam"));
+        cart.attach(new Salesperson("Mariam","ssenkumbanelson.sn@gmail.com"));
         List<Observer> observerList = cart.getAllObservers();
         assertNotNull(observerList);
         assertEquals(1, observerList.size());

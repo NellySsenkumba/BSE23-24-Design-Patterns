@@ -6,7 +6,18 @@
         "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\activation-1.1.jar",
         "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\mail-1.4.1.jar",
         "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\simple-java-mail-1.8.jar",
-        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\slf4j-api-1.6.1.jar"
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\slf4j-api-1.6.1.jar",
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\byte-buddy-1.12.16.jar",
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\byte-buddy-agent-1.12.16.jar",
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\generics-resolver-3.0.3.jar",
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\mockito-core-4.8.1.jar",
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\mockito-scala_2.13-1.17.14.jar",
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\mockito-scala-scalatest_2.13-1.17.14.jar",
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\objenesis-3.2.jar",
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\scalactic_2.13-3.2.13.jar",
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\scala-library-2.13.8.jar",
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\scala-parallel-collections_2.13-1.0.4.jar",
+        "f:\\#Campus Work\\Year 4 Semester 2\\Software Design Patterns\\Assignments\\Jar\\scala-reflect-2.13.8.jar"
     ],
     "java.debug.settings.onBuildFailureProceed": true
 }

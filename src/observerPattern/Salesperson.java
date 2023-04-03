@@ -7,9 +7,9 @@ public class Salesperson implements Observer {
     private String name;
     private String email;
 
-    public Salesperson(String name,String email) {
+    public Salesperson(String name, String email) {
         this.name = name;
-        this.email=email;
+        this.email = email;
     }
 
     @Override
