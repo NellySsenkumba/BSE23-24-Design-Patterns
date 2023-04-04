@@ -5,11 +5,13 @@ import java.util.List;
 import observerPattern.*;
 
 import Product.*;
+import barcodeScanner.BarcodeScannerObserver;
 
-public class ProductCatalog implements Subject {
+public class ProductCatalog implements Subject, BarcodeScannerObserver {
     private static ProductCatalog instance = null;
     private List<Product> productList = new ArrayList<>();
     private List<Observer> observerList = new ArrayList<>();
+    private List<String> barcodeList = new ArrayList<>();
 
     private ProductCatalog() {
     }
@@ -62,6 +64,16 @@ public class ProductCatalog implements Subject {
     @Override
     public void detachAllObservers() {
         observerList.clear();
+    }
+
+    @Override
+    public void update(String barcode) {
+        barcodeList.add(barcode);
+        System.out.println("Added item with barcode " + barcode + " to cart.");
+    }
+
+    public List<String> getItems() {
+        return barcodeList;
     }
 
 }
