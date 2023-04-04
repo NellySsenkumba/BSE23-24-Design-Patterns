@@ -11,17 +11,14 @@ public class Client {
                 // Singleton Pattern
                 ProductCatalog cart = ProductCatalog.getInstance();
                 // Observer Pattern
-                cart.attach(new Salesperson("Nelson", "ssenkumbanelson.sn@gmail.com"));
+                cart.attach(new Salesperson("Brian", "a.brizzy.ba@gmail.com"));
                 cart.addProduct(cloth);
                 // Decorator Pattern
                 cloth = new ExpressShipping(new GiftWrapping(cloth));
 
                 cart.addProduct(cloth);
 
-                System.out.println(cloth.getPrice());
-                System.out.println(cloth.getDescription());
-                System.out.println(cloth.getName());
-                System.out.println(cloth.getQuantity());
+                
 
         }
 }
