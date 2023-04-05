@@ -1,5 +1,5 @@
 package barcodeScanner;
 
-public interface BarcodeScannerObserver {
+public interface ProductObserver {
     void update(String barcode);
 }

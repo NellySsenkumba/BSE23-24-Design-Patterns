@@ -3,20 +3,30 @@ package barcodeScanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BarcodeScanner implements BarcodeScannerSubject {
-    private List<BarcodeScannerObserver> observers = new ArrayList<>();
+import Product.Product;
+import Singleton.ProductCatalog;
 
-    public void attach(BarcodeScannerObserver observer) {
-        observers.add(observer);
+public class BarcodeScanner implements BarcodeSubject {
+    private List<Product> productList = new ArrayList<>();
+
+    @Override
+    public void attach(Product product) {
+        this.productList.add(product);
     }
 
-    public void detach(BarcodeScannerObserver observer) {
-        observers.remove(observer);
+    @Override
+    public void detach(Product product) {
+        this.productList.remove(product);
     }
 
-    public void notifyObservers(String barcode) {
-        for (BarcodeScannerObserver observer : observers) {
-            observer.update(barcode);
+    @Override
+    public void scanProduct(ProductCatalog pc) {
+        for (Product pdt : productList) {
+            System.out
+                    .println(pdt.getName() + "(" + pdt.getDescription() + ")" + " has been scanned and added to cart.");
+            pdt.update(pdt, pc);
         }
+
     }
+
 }

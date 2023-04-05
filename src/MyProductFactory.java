@@ -3,7 +3,7 @@ import Product.*;
 
 public class MyProductFactory extends ProductFactory {
     @Override
-    Product create(String category, String name, double price, String description, int quantity) {
+     Product create(String category, String name, double price, String description, int quantity) {
         if (category.toLowerCase().contains("elect")) {
             return new Electronic(name, price, description, quantity);
         } else if (category.toLowerCase().contains("grocer")) {

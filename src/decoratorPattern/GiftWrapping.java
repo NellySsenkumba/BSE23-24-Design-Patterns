@@ -1,6 +1,7 @@
 package decoratorPattern;
 
 import Product.Product;
+import Singleton.ProductCatalog;
 
 public class GiftWrapping extends ProductDecorator {
 
@@ -20,4 +21,9 @@ public class GiftWrapping extends ProductDecorator {
         this.setDescription(product.getDescription() + ", gift_wrapped");
     }
 
+    @Override
+    public void update(Product product,ProductCatalog cart) {
+    
+        cart.addProduct(product);
+    }
 }

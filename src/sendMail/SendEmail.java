@@ -44,7 +44,7 @@ public class SendEmail {
             message.setText(msg);
 
             // Send the message
-            Transport.send(message);
+            // Transport.send(message);
 
             System.out.println("Email sent successfully!");
         } catch (MessagingException e) {

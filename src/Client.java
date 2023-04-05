@@ -1,5 +1,6 @@
 import Product.*;
 import Singleton.ProductCatalog;
+import barcodeScanner.BarcodeScanner;
 import decoratorPattern.*;
 import observerPattern.Salesperson;
 import strategyPattern.Cash;
@@ -14,20 +15,24 @@ public class Client {
                 // Singleton Pattern
                 ProductCatalog cart = ProductCatalog.getInstance();
                 // Observer Pattern
-                // cart.attach(new Salesperson("Brian", "a.brizzy.ba@gmail.com"));
-                cart.addProduct(cloth);
+                cart.attach(new Salesperson("Brian", "a.brizzy.ba@gmail.com"));
+
                 // Decorator Pattern
                 cloth = new ExpressShipping(new GiftWrapping(cloth));
 
-                cart.addProduct(cloth);
+                // Barcode scanner
+                BarcodeScanner barcodeScanner = new BarcodeScanner();
+                barcodeScanner.attach(cloth);
 
-                // paymentmethod
-                
+                // adding to cart with barcode
+                barcodeScanner.scanProduct(cart);
+
+                // paymentmethod for the product
 
                 PaymentContext paymentcontext = new PaymentContext(new CreditCard(1234567897635267L));
                 PaymentContext paymentcontext1 = new PaymentContext(new Cash());
-                paymentcontext.pay(5000.0);
-                paymentcontext1.pay(5000.0);
+                paymentcontext.pay(cart.getTotalPrice());
+                paymentcontext1.pay(cart.getTotalPrice());
 
         }
 }

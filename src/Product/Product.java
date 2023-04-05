@@ -1,5 +1,7 @@
 package Product;
 
+import Singleton.ProductCatalog;
+
 public abstract class Product {
     private String name;
     private int quantity;
@@ -7,6 +9,8 @@ public abstract class Product {
     private double price;
 
     public abstract void updateDescription();
+
+    public abstract void update(Product product, ProductCatalog cart);// for barcode
 
     public String getName() {
         return this.name;

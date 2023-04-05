@@ -1,5 +1,7 @@
 package Product;
 
+import Singleton.ProductCatalog;
+
 public class Electronic extends Product {
 
     public Electronic(String name, double price, String description, int quantity) {
@@ -13,6 +15,11 @@ public class Electronic extends Product {
     @Override
     public void updateDescription() {
         this.setDescription(this.getDescription() + ", electronic");
+    }
+    @Override
+    public void update(Product product,ProductCatalog cart) {
+    
+        cart.addProduct(product);
     }
 
 }
