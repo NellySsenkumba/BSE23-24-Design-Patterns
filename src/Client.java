@@ -1,8 +1,8 @@
 import Product.*;
 import Singleton.ProductCatalog;
 import barcodeScanner.BarcodeScanner;
-import decoratorPattern.*;
 import observerPattern.Salesperson;
+import productFactory.MyProductFactory;
 import strategyPattern.Cash;
 import strategyPattern.CreditCard;
 import strategyPattern.PaymentContext;
@@ -17,13 +17,15 @@ public class Client {
                 // Singleton Pattern
                 ProductCatalog cart = ProductCatalog.getInstance();
                 // Observer Pattern
-                cart.attach(new Salesperson("Brian", "a.brizzy.ba@gmail.com"));
+                cart.attach(new Salesperson("Aaron", "aaronmug091@gmail.com"));
 
                 // Decorator Pattern
-                cloth = new ExpressShipping(new GiftWrapping(cloth));
+                // cloth = new ExpressShipping(new GiftWrapping(cloth));
+                // tv = new ExpressShipping(tv);
 
                 // adding to cart with barcode
                 BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
+                // barcodeScanner.detach(cloth);
                 barcodeScanner.scanProduct("236645875");
                 // barcodeScanner.scanProduct("123456789");
 

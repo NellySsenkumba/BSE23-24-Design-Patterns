@@ -1,5 +1,7 @@
 package barcodeScanner;
 
+import java.util.List;
+
 import Product.Product;
 
 public interface BarcodeSubject {
@@ -8,4 +10,8 @@ public interface BarcodeSubject {
     void detach(Product product);
 
     void scanProduct(String barcode);
+
+    public List<Product> getAllProducts();
+
+    public void detachAllProducts();
 }

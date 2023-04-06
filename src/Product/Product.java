@@ -1,8 +1,9 @@
 package Product;
 
 import Singleton.ProductCatalog;
+import barcodeScanner.ProductObserver;
 
-public abstract class Product {
+public abstract class Product implements ProductObserver {
     private String name;
     private int quantity;
     private String description;
@@ -11,7 +12,7 @@ public abstract class Product {
 
     public abstract void updateDescription();
 
-    public abstract void update(Product product, ProductCatalog cart);// for barcode
+   
 
     public String getName() {
         return this.name;
@@ -51,6 +52,18 @@ public abstract class Product {
 
     public void setBarcode(String barcodeNumber) {
         this.barcodeNumber = barcodeNumber;
+    }
+
+
+
+    @Override
+    public void update(String barcode) {
+        ProductCatalog cart =ProductCatalog.getInstance();
+        if(this.getBarcode().equals(barcode)){
+            cart.addProduct(this);
+
+        }
+        
     }
 
 }

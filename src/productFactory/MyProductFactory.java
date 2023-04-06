@@ -1,5 +1,4 @@
-
-import java.util.Random;
+package productFactory;
 
 import Product.*;
 import barcodeScanner.BarcodeScanner;
@@ -7,7 +6,7 @@ import barcodeScanner.BarcodeScanner;
 public class MyProductFactory extends ProductFactory {
 
     @Override
-    Product create(String category, String name, double price, String description, int quantity, String barcode) {
+    public Product create(String category, String name, double price, String description, int quantity, String barcode) {
         BarcodeScanner barcodeScaner = BarcodeScanner.getInstance();
         Product pdt;
 

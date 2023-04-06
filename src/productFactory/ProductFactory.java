@@ -1,3 +1,4 @@
+package productFactory;
 import Product.Product;
 
 public abstract class ProductFactory {

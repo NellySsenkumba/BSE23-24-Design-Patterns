@@ -1,7 +1,5 @@
 package Product;
 
-import Singleton.ProductCatalog;
-
 public class Groceries extends Product {
 
     public Groceries(String name, double price, String description, int quantity, String barcode) {
@@ -18,10 +16,6 @@ public class Groceries extends Product {
         this.setDescription(this.getDescription() + ", groceries");
     }
 
-    @Override
-    public void update(Product product, ProductCatalog cart) {
-
-        cart.addProduct(product);
-    }
+    
 
 }
