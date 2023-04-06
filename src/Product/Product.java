@@ -7,6 +7,7 @@ public abstract class Product {
     private int quantity;
     private String description;
     private double price;
+    private String barcodeNumber;
 
     public abstract void updateDescription();
 
@@ -42,6 +43,14 @@ public abstract class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getBarcode() {
+        return this.barcodeNumber;
+    }
+
+    public void setBarcode(String barcodeNumber) {
+        this.barcodeNumber = barcodeNumber;
     }
 
 }

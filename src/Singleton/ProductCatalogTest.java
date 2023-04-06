@@ -62,7 +62,7 @@ public class ProductCatalogTest {
         ProductCatalog pc = ProductCatalog.getInstance();
         Salesperson Mariam = new Salesperson("Mariam","ssenkumbanelson.sn@gmail.com");
 
-        Product product = new Electronic("Laptop", 1999.99, "Macbook Pro", 5);
+        Product product = (new MyProductFactory).create("Electronic","Laptop", 1999.99, "Macbook Pro", 5);
 
         pc.attach(Mariam);
         pc.addProduct(product);

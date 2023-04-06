@@ -11,7 +11,9 @@ public class Client {
         public static void main(String[] args)
                         throws Exception {
                 // Fatory method pattern
-                Product cloth = new MyProductFactory().create("CLOTHINGS", "Hijab", 50000, "white", 1);
+                Product cloth = new MyProductFactory().create("CLOTHINGS", "Hijab", 50000, "white", 59, "236645875");
+                Product tv = new MyProductFactory().create("Electronic", "Television", 500000, "Hisense 32 inch", 30,
+                                "123456789");
                 // Singleton Pattern
                 ProductCatalog cart = ProductCatalog.getInstance();
                 // Observer Pattern
@@ -20,16 +22,14 @@ public class Client {
                 // Decorator Pattern
                 cloth = new ExpressShipping(new GiftWrapping(cloth));
 
-                // Barcode scanner
-                BarcodeScanner barcodeScanner = new BarcodeScanner();
-                barcodeScanner.attach(cloth);
-
                 // adding to cart with barcode
-                barcodeScanner.scanProduct(cart);
+                BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
+                barcodeScanner.scanProduct("236645875");
+                // barcodeScanner.scanProduct("123456789");
 
                 // paymentmethod for the product
 
-                PaymentContext paymentcontext = new PaymentContext(new CreditCard(1234567897635267L));
+                PaymentContext paymentcontext = new PaymentContext(new CreditCard("1234567897635267"));
                 PaymentContext paymentcontext1 = new PaymentContext(new Cash());
                 paymentcontext.pay(cart.getTotalPrice());
                 paymentcontext1.pay(cart.getTotalPrice());

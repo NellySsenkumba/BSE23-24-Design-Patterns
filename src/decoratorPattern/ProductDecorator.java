@@ -12,6 +12,7 @@ abstract class ProductDecorator extends Product {
         this.setDescription(product.getDescription());
         this.setQuantity(product.getQuantity());
         this.setPrice(product.getPrice());
+        this.setBarcode(product.getBarcode());
 
     }
 

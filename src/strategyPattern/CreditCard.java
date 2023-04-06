@@ -1,10 +1,10 @@
 package strategyPattern;
 
 public class CreditCard implements PaymentMethod {
-    private int[] cardNumber = new int[16];
+    private char[] cardNumber = new char[16];
 
-    public CreditCard(long cardNumber) {
-        this.cardNumber = Long.toString(cardNumber).chars().toArray();
+    public CreditCard(String cardNumber) {
+        this.cardNumber = cardNumber.toCharArray();
 
     }
 

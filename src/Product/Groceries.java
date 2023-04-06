@@ -4,11 +4,12 @@ import Singleton.ProductCatalog;
 
 public class Groceries extends Product {
 
-    public Groceries(String name, double price, String description, int quantity) {
+    public Groceries(String name, double price, String description, int quantity, String barcode) {
         this.setName(name);
         this.setPrice(price);
         this.setDescription(description);
         this.setQuantity(quantity);
+        this.setBarcode(barcode);
         updateDescription();
     }
 
@@ -18,8 +19,8 @@ public class Groceries extends Product {
     }
 
     @Override
-    public void update(Product product,ProductCatalog cart) {
-    
+    public void update(Product product, ProductCatalog cart) {
+
         cart.addProduct(product);
     }
 

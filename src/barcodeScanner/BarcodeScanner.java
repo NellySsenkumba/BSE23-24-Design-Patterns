@@ -7,7 +7,20 @@ import Product.Product;
 import Singleton.ProductCatalog;
 
 public class BarcodeScanner implements BarcodeSubject {
-    private List<Product> productList = new ArrayList<>();
+    private static List<Product> productList = new ArrayList<>();
+    public static BarcodeScanner instance = null;
+
+    private BarcodeScanner() {
+
+    }
+
+    public static BarcodeScanner getInstance() {
+        if (instance == null) {
+            return new BarcodeScanner();
+
+        }
+        return instance;
+    }
 
     @Override
     public void attach(Product product) {
@@ -20,11 +33,21 @@ public class BarcodeScanner implements BarcodeSubject {
     }
 
     @Override
-    public void scanProduct(ProductCatalog pc) {
-        for (Product pdt : productList) {
-            System.out
-                    .println(pdt.getName() + "(" + pdt.getDescription() + ")" + " has been scanned and added to cart.");
-            pdt.update(pdt, pc);
+    public void scanProduct(String barcode) {
+        ProductCatalog cart = ProductCatalog.getInstance();
+        int exist = 0;
+        Product pdt = null;
+        for (Product product : productList) {
+            if (product.getBarcode().equals(barcode)) {
+                exist = 1;
+                pdt = product;
+                break;
+            }
+        }
+        if (exist == 1) {
+            cart.addProduct(pdt);
+        } else {
+            System.out.println("Product doesnt exist");
         }
 
     }
