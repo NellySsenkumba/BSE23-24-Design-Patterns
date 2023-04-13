@@ -25,7 +25,37 @@ public class ProductCatalog implements Subject {
 
     public void addProduct(Product product) {
         totalPrice += product.getPrice();
-        productList.add(product);
+        int exist = 0;
+        for (Product pdt : productList) {
+            if (pdt.getBarcode().equals(product.getBarcode())) {
+                pdt.setQuantity(pdt.getQuantity() + 1);
+                exist = 1;
+                break;
+            }
+        }
+        if (exist == 0) {
+            product.setQuantity(1);
+            productList.add(product);
+        }
+
+        notifyObservers(product);
+    }
+
+    public void addProduct(Product product, int quantity) {
+        totalPrice +=(product.getPrice()*quantity);
+        int exist = 0;
+        for (Product pdt : productList) {
+            if (pdt.getBarcode().equals(product.getBarcode())) {
+                pdt.setQuantity(pdt.getQuantity() + quantity);
+                exist = 1;
+                break;
+            }
+        }
+        if (exist == 0) {
+            product.setQuantity(quantity);
+            productList.add(product);
+        }
+
         notifyObservers(product);
     }
 

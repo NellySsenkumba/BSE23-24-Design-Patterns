@@ -5,7 +5,6 @@ import java.util.List;
 
 import Product.Product;
 
-
 public class BarcodeScanner implements BarcodeSubject {
     static List<Product> productList = new ArrayList<>();
     public static BarcodeScanner instance = null;
@@ -33,10 +32,18 @@ public class BarcodeScanner implements BarcodeSubject {
 
     @Override
     public void scanProduct(String barcode) {
-        for (Product pdt: productList){
+        for (Product pdt : productList) {
             pdt.update(barcode);
         }
-        
+
+    }
+
+    @Override
+    public void scanProduct(String barcode, int quantity) {
+        for (Product pdt : productList) {
+            pdt.update(barcode, quantity);
+        }
+
     }
 
     @Override
@@ -47,6 +54,15 @@ public class BarcodeScanner implements BarcodeSubject {
     @Override
     public void detachAllProducts() {
         productList.clear();
+    }
+
+    public void updateInventory(String barcode, int quantity) {
+        for (Product pdt : productList) {
+            if (pdt.getBarcode().equals(barcode)) {
+                pdt.setQuantity(pdt.getQuantity() + quantity);
+                break;
+            }
+        }
     }
 
 }

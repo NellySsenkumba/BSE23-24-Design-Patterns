@@ -11,6 +11,8 @@ public interface BarcodeSubject {
 
     void scanProduct(String barcode);
 
+    void scanProduct(String barcode, int quantity);
+
     public List<Product> getAllProducts();
 
     public void detachAllProducts();

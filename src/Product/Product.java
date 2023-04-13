@@ -66,4 +66,14 @@ public abstract class Product implements ProductObserver {
         
     }
 
+    @Override
+    public void update(String barcode, int quantity) {
+        ProductCatalog cart =ProductCatalog.getInstance();
+        if(this.getBarcode().equals(barcode)){
+            cart.addProduct(this,quantity);
+
+        }
+        
+    }
+
 }
