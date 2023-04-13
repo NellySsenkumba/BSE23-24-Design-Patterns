@@ -6,7 +6,7 @@ import java.util.List;
 import Product.Product;
 
 public class BarcodeScanner implements BarcodeSubject {
-    static List<Product> productList = new ArrayList<>();
+    static private List<Product> invetoryList = new ArrayList<>();// invetory
     public static BarcodeScanner instance = null;
 
     private BarcodeScanner() {
@@ -22,17 +22,17 @@ public class BarcodeScanner implements BarcodeSubject {
 
     @Override
     public void attach(Product product) {
-        productList.add(product);
+        invetoryList.add(product);
     }
 
     @Override
     public void detach(Product product) {
-        productList.remove(product);
+        invetoryList.remove(product);
     }
 
     @Override
     public void scanProduct(String barcode) {
-        for (Product pdt : productList) {
+        for (Product pdt : invetoryList) {
             pdt.update(barcode);
         }
 
@@ -40,7 +40,7 @@ public class BarcodeScanner implements BarcodeSubject {
 
     @Override
     public void scanProduct(String barcode, int quantity) {
-        for (Product pdt : productList) {
+        for (Product pdt : invetoryList) {
             pdt.update(barcode, quantity);
         }
 
@@ -48,16 +48,16 @@ public class BarcodeScanner implements BarcodeSubject {
 
     @Override
     public List<Product> getAllProducts() {
-        return productList;
+        return invetoryList;
     }
 
     @Override
     public void detachAllProducts() {
-        productList.clear();
+        invetoryList.clear();
     }
 
     public void updateInventory(String barcode, int quantity) {
-        for (Product pdt : productList) {
+        for (Product pdt : invetoryList) {
             if (pdt.getBarcode().equals(barcode)) {
                 pdt.setQuantity(pdt.getQuantity() + quantity);
                 break;
@@ -66,9 +66,9 @@ public class BarcodeScanner implements BarcodeSubject {
     }
 
     public void reduceInventory(String barcode, int quantity) {
-        for (Product pdt : productList) {
+        for (Product pdt : invetoryList) {
             if (pdt.getBarcode().equals(barcode)) {
-                System.out.println("Quantity:>>>>>"+ pdt.getQuantity());
+                System.out.println("Quantity:>>>>>" + pdt.getQuantity());
                 pdt.setQuantity(pdt.getQuantity() - quantity);
                 break;
             }

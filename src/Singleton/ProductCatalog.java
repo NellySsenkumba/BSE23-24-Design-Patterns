@@ -41,8 +41,8 @@ public class ProductCatalog implements Subject {
         }
 
         notifyObservers(product);
-        BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
-        barcodeScanner.reduceInventory(product.getBarcode(), 1);
+        // BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
+        // barcodeScanner.reduceInventory(product.getBarcode(), 1);
     }
 
     public void addProduct(Product product, int quantity) {
@@ -62,8 +62,8 @@ public class ProductCatalog implements Subject {
         }
 
         notifyObservers(product);
-        BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
-        barcodeScanner.reduceInventory(product.getBarcode(), quantity);
+        // BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
+        // barcodeScanner.reduceInventory(product.getBarcode(), quantity);
 
     }
 

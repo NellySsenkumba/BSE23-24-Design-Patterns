@@ -33,12 +33,12 @@ public class Client {
                 // adding to cart with barcode
                 BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
                 barcodeScanner.updateInventory("230645875", 50);
-                System.out.println(tomato.getQuantity());
+                // System.out.println(tomato.getQuantity());
 
                 // barcodeScanner.detach(cloth);
-                barcodeScanner.scanProduct("236645875", 7);
-                barcodeScanner.scanProduct("123456789", 6);
-                barcodeScanner.scanProduct("230645875", 20);
+                // barcodeScanner.scanProduct("236645875", 7);
+                // barcodeScanner.scanProduct("123456789", 6);
+                // barcodeScanner.scanProduct("230645875", 20);
 
                 // barcodeScanner.scanProduct("123456789");
 
@@ -46,30 +46,29 @@ public class Client {
 
                 PaymentContext paymentcontext = new PaymentContext(new CreditCard("1234567897635267"));
                 PaymentContext paymentcontext1 = new PaymentContext(new Cash());
-                paymentcontext.pay(cart.getTotalPrice());
+                // paymentcontext.pay(cart.getTotalPrice());
 
-                paymentcontext1.pay(cart.getTotalPrice());
+                // paymentcontext1.pay(cart.getTotalPrice());
 
-                // receipt generation
-                List<Product> purchased = cart.getAllProducts();
+                ReceiptGeneartion receipt = new ReceiptGeneartion();
+                // receipt.generateReceipt();
 
-                Gson gson = new Gson();
-                JsonObject jsonObject = new JsonObject();
+                // for (Product pdt : ProductCatalog.getInstance().getAllProducts()) {
+                // System.out.println("From cart");
+                // System.out.println(pdt.getName() + " Quantity" + pdt.getQuantity());
 
-                for (Product pdt : purchased) {
-                        double subTotal = pdt.getQuantity() * pdt.getPrice();
+                // }
 
-                        jsonObject.addProperty("Name", pdt.getName());
-                        jsonObject.addProperty("Description", pdt.getDescription());
-                        jsonObject.addProperty("Quantity", pdt.getQuantity());
-                        jsonObject.addProperty("Unit Price", pdt.getPrice());
-                        jsonObject.addProperty("Sub Total", subTotal);
-                        String json = gson.toJson(jsonObject);
-                        System.out.println(json);
+                for (Product pdt : BarcodeScanner.getInstance().getAllProducts()) {
+                        // System.out.println("From inventory");
+                        System.out.println(pdt.getName() + "  Quantity " + pdt.getQuantity());
 
                 }
 
-                System.out.println(tomato.getQuantity());
+                BarcodeScanner obj = BarcodeScanner.getInstance();
+                obj.reduceInventory("230645875", 3);
+
+                // System.out.println(tomato.getQuantity());
 
         }
 
