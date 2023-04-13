@@ -34,7 +34,6 @@ public class Client {
                 BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
                 barcodeScanner.updateInventory("230645875", 50);
                 System.out.println(tomato.getQuantity());
-                
 
                 // barcodeScanner.detach(cloth);
                 barcodeScanner.scanProduct("236645875", 7);
@@ -48,6 +47,7 @@ public class Client {
                 PaymentContext paymentcontext = new PaymentContext(new CreditCard("1234567897635267"));
                 PaymentContext paymentcontext1 = new PaymentContext(new Cash());
                 paymentcontext.pay(cart.getTotalPrice());
+
                 paymentcontext1.pay(cart.getTotalPrice());
 
                 // receipt generation
@@ -72,5 +72,5 @@ public class Client {
                 System.out.println(tomato.getQuantity());
 
         }
-        
+
 }
