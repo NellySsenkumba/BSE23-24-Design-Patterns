@@ -34,6 +34,7 @@ public class Client {
                 BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
                 barcodeScanner.updateInventory("230645875", 50);
                 System.out.println(tomato.getQuantity());
+                
 
                 // barcodeScanner.detach(cloth);
                 barcodeScanner.scanProduct("236645875", 7);
@@ -68,5 +69,8 @@ public class Client {
 
                 }
 
+                System.out.println(tomato.getQuantity());
+
         }
+        
 }

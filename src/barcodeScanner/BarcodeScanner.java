@@ -65,4 +65,14 @@ public class BarcodeScanner implements BarcodeSubject {
         }
     }
 
+    public void reduceInventory(String barcode, int quantity) {
+        for (Product pdt : productList) {
+            if (pdt.getBarcode().equals(barcode)) {
+                System.out.println("Quantity:>>>>>"+ pdt.getQuantity());
+                pdt.setQuantity(pdt.getQuantity() - quantity);
+                break;
+            }
+        }
+    }
+
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import observerPattern.*;
 
 import Product.*;
+import barcodeScanner.BarcodeScanner;
 
 public class ProductCatalog implements Subject {
     private static ProductCatalog instance = null;
@@ -36,9 +37,12 @@ public class ProductCatalog implements Subject {
         if (exist == 0) {
             product.setQuantity(1);
             productList.add(product);
+            
         }
 
         notifyObservers(product);
+        BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
+        barcodeScanner.reduceInventory(product.getBarcode(), 1);
     }
 
     public void addProduct(Product product, int quantity) {
@@ -48,6 +52,7 @@ public class ProductCatalog implements Subject {
             if (pdt.getBarcode().equals(product.getBarcode())) {
                 pdt.setQuantity(pdt.getQuantity() + quantity);
                 exist = 1;
+                
                 break;
             }
         }
@@ -57,6 +62,9 @@ public class ProductCatalog implements Subject {
         }
 
         notifyObservers(product);
+        BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
+        barcodeScanner.reduceInventory(product.getBarcode(), quantity);
+
     }
 
     public List<Product> getAllProducts() {
