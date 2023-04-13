@@ -1,12 +1,12 @@
 package barcodeScanner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import Product.Product;
 
 public class BarcodeScanner implements BarcodeSubject {
-    static private List<Product> invetoryList = new ArrayList<>();// invetory
+    private Map<String, Product> invetoryList = new HashMap<>(); // inventory
     public static BarcodeScanner instance = null;
 
     private BarcodeScanner() {
@@ -22,32 +22,28 @@ public class BarcodeScanner implements BarcodeSubject {
 
     @Override
     public void attach(Product product) {
-        invetoryList.add(product);
+        invetoryList.put(product.getBarcode(), product);
     }
 
     @Override
     public void detach(Product product) {
-        invetoryList.remove(product);
+        invetoryList.remove(product.getBarcode());
     }
 
     @Override
-    public void scanProduct(String barcode) {
-        for (Product pdt : invetoryList) {
-            pdt.update(barcode);
-        }
-
-    }
-
-    @Override
-    public void scanProduct(String barcode, int quantity) {
-        for (Product pdt : invetoryList) {
-            pdt.update(barcode, quantity);
-        }
+    public void scanProduct(String barcode) throws CloneNotSupportedException {
+        invetoryList.get(barcode).update(barcode);
 
     }
 
     @Override
-    public List<Product> getAllProducts() {
+    public void scanProduct(String barcode, int quantity) throws CloneNotSupportedException {
+        invetoryList.get(barcode).update(barcode, quantity);
+
+    }
+
+    @Override
+    public Map<String, Product> getAllProducts() {
         return invetoryList;
     }
 
@@ -57,22 +53,15 @@ public class BarcodeScanner implements BarcodeSubject {
     }
 
     public void updateInventory(String barcode, int quantity) {
-        for (Product pdt : invetoryList) {
-            if (pdt.getBarcode().equals(barcode)) {
-                pdt.setQuantity(pdt.getQuantity() + quantity);
-                break;
-            }
-        }
+        Product pdt = invetoryList.get(barcode);
+        pdt.setQuantity(pdt.getQuantity() + quantity);
+
     }
 
     public void reduceInventory(String barcode, int quantity) {
-        for (Product pdt : invetoryList) {
-            if (pdt.getBarcode().equals(barcode)) {
-                System.out.println("Quantity:>>>>>" + pdt.getQuantity());
-                pdt.setQuantity(pdt.getQuantity() - quantity);
-                break;
-            }
-        }
+        Product pdt = invetoryList.get(barcode);
+        pdt.setQuantity(pdt.getQuantity() - quantity);
+
     }
 
 }

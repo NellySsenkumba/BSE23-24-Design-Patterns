@@ -3,7 +3,7 @@ package Product;
 import Singleton.ProductCatalog;
 import barcodeScanner.ProductObserver;
 
-public abstract class Product implements ProductObserver {
+public abstract class Product implements ProductObserver, Cloneable {
     private String name;
     private int quantity;
     private String description;
@@ -11,8 +11,6 @@ public abstract class Product implements ProductObserver {
     private String barcodeNumber;
 
     public abstract void updateDescription();
-
-   
 
     public String getName() {
         return this.name;
@@ -54,26 +52,28 @@ public abstract class Product implements ProductObserver {
         this.barcodeNumber = barcodeNumber;
     }
 
-
-
     @Override
-    public void update(String barcode) {
-        ProductCatalog cart =ProductCatalog.getInstance();
-        if(this.getBarcode().equals(barcode)){
+    public void update(String barcode) throws CloneNotSupportedException {
+        ProductCatalog cart = ProductCatalog.getInstance();
+        if (this.getBarcode().equals(barcode)) {
             cart.addProduct(this);
 
         }
-        
+
     }
 
     @Override
-    public void update(String barcode, int quantity) {
-        ProductCatalog cart =ProductCatalog.getInstance();
-        if(this.getBarcode().equals(barcode)){
-            cart.addProduct(this,quantity);
+    public void update(String barcode, int quantity) throws CloneNotSupportedException {
+        ProductCatalog cart = ProductCatalog.getInstance();
+        if (this.getBarcode().equals(barcode)) {
+            cart.addProduct(this, quantity);
 
         }
-        
+
+    }
+
+    public Product clone() throws CloneNotSupportedException {
+        return (Product) super.clone();
     }
 
 }

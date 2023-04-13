@@ -1,7 +1,10 @@
 package Singleton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import observerPattern.*;
 
 import Product.*;
@@ -11,7 +14,8 @@ public class ProductCatalog implements Subject {
     private static ProductCatalog instance = null;
     private double totalPrice = 0;
 
-    private List<Product> productList = new ArrayList<>();
+    private Map<String, Product> productList = new HashMap<>();
+
     private List<Observer> salespersonsList = new ArrayList<>();
 
     private ProductCatalog() {
@@ -24,50 +28,44 @@ public class ProductCatalog implements Subject {
         return instance;
     }
 
-    public void addProduct(Product product) {
+    public void addProduct(Product product) throws CloneNotSupportedException {
         totalPrice += product.getPrice();
-        int exist = 0;
-        for (Product pdt : productList) {
-            if (pdt.getBarcode().equals(product.getBarcode())) {
-                pdt.setQuantity(pdt.getQuantity() + 1);
-                exist = 1;
-                break;
-            }
-        }
-        if (exist == 0) {
+        product = product.clone();
+
+        if (productList.containsKey(product.getBarcode())) {
+            product.setQuantity(product.getQuantity() + 1);
+
+        } else {
             product.setQuantity(1);
-            productList.add(product);
-            
+            productList.put(product.getBarcode(), product);
+
         }
 
         notifyObservers(product);
-        // BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
-        // barcodeScanner.reduceInventory(product.getBarcode(), 1);
+        BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
+        barcodeScanner.reduceInventory(product.getBarcode(), 1);
     }
 
-    public void addProduct(Product product, int quantity) {
-        totalPrice +=(product.getPrice()*quantity);
-        int exist = 0;
-        for (Product pdt : productList) {
-            if (pdt.getBarcode().equals(product.getBarcode())) {
-                pdt.setQuantity(pdt.getQuantity() + quantity);
-                exist = 1;
-                
-                break;
-            }
-        }
-        if (exist == 0) {
+    public void addProduct(Product product, int quantity) throws CloneNotSupportedException {
+
+        totalPrice += (product.getPrice() * quantity);
+        product = product.clone();
+        if (productList.containsKey(product.getBarcode())) {
+            product.setQuantity(product.getQuantity() + quantity);
+
+        } else {
             product.setQuantity(quantity);
-            productList.add(product);
+            productList.put(product.getBarcode(), product);
+
         }
 
         notifyObservers(product);
-        // BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
-        // barcodeScanner.reduceInventory(product.getBarcode(), quantity);
+        BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
+        barcodeScanner.reduceInventory(product.getBarcode(), quantity);
 
     }
 
-    public List<Product> getAllProducts() {
+    public Map<String, Product> getAllProducts() {
         return productList;
     }
 

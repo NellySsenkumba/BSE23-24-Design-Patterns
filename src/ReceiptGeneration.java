@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -8,13 +8,14 @@ import Singleton.ProductCatalog;
 
 class ReceiptGeneartion {
     ProductCatalog cart = ProductCatalog.getInstance();
-    List<Product> purchased = cart.getAllProducts();
+    Map<String, Product> purchased = cart.getAllProducts();
 
     void generateReceipt() {
         Gson gson = new Gson();
         JsonObject jsonObject = new JsonObject();
 
-        for (Product pdt : purchased) {
+        for (String barcode : purchased.keySet()) {
+            Product pdt = purchased.get(barcode);
             double subTotal = pdt.getQuantity() * pdt.getPrice();
 
             jsonObject.addProperty("Name", pdt.getName());

@@ -1,6 +1,6 @@
 package barcodeScanner;
 
-import java.util.List;
+import java.util.Map;
 
 import Product.Product;
 
@@ -9,11 +9,11 @@ public interface BarcodeSubject {
 
     void detach(Product product);
 
-    void scanProduct(String barcode);
+    void scanProduct(String barcode) throws CloneNotSupportedException;
 
-    void scanProduct(String barcode, int quantity);
+    void scanProduct(String barcode, int quantity) throws CloneNotSupportedException;
 
-    public List<Product> getAllProducts();
+    public Map<String, Product> getAllProducts();
 
     public void detachAllProducts();
 }
