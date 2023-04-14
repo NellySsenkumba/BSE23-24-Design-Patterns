@@ -42,6 +42,7 @@ public class ProductCatalog implements Subject {
         }
 
         notifyObservers(product);
+        // update invetory
         BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
         barcodeScanner.reduceInventory(product.getBarcode(), 1);
     }

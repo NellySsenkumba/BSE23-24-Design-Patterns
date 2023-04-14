@@ -31,7 +31,7 @@ public class BarcodeScanner implements BarcodeSubject {
     }
 
     @Override
-    public void scanProduct(String barcode) throws CloneNotSupportedException {
+    public void scanProduct(String barcode) throws CloneNotSupportedException {// update method
         invetoryList.get(barcode).update(barcode);
 
     }

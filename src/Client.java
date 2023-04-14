@@ -27,10 +27,13 @@ public class Client {
                 cloth = new ExpressShipping(new GiftWrapping(cloth));
                 tv = new ExpressShipping(tv);
 
-                // adding to cart with barcode
+                // update inventory
                 BarcodeScanner barcodeScanner = BarcodeScanner.getInstance();
                 barcodeScanner.updateInventory("230645875", 50);
 
+                System.out.println(tomato.getQuantity());// 100
+
+                // adding to cart with barcode
                 barcodeScanner.scanProduct("236645875");
                 barcodeScanner.scanProduct("236645875", 7);
                 barcodeScanner.scanProduct("123456789", 6);
@@ -45,9 +48,9 @@ public class Client {
                 paymentcontext1.pay(cart.getTotalPrice());
 
                 // generating receipt
-                new ReceiptGeneartion().generateReceipt();
+                new ReceiptGeneartion().generateReceipt();// 20 tomatoes
 
-                System.out.println(tomato.getQuantity());
+                System.out.println(tomato.getQuantity());// 80
 
         }
 
