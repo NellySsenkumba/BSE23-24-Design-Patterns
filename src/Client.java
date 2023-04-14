@@ -48,7 +48,7 @@ public class Client {
                 paymentcontext1.pay(cart.getTotalPrice());
 
                 // generating receipt
-                new ReceiptGeneartion().generateReceipt();// 20 tomatoes
+                new ReceiptGeneration().generateReceipt();
 
                 System.out.println(tomato.getQuantity());// 80
 
