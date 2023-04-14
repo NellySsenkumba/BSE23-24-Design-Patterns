@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import Product.Product;
 import Singleton.ProductCatalog;
 
-class ReceiptGeneartion {
+class ReceiptGeneration {
     ProductCatalog cart = ProductCatalog.getInstance();
     Map<String, Product> purchased = cart.getAllProducts();
 

@@ -45,7 +45,7 @@ public class Client {
                 paymentcontext1.pay(cart.getTotalPrice());
 
                 // generating receipt
-                new ReceiptGeneartion().generateReceipt();
+                new ReceiptGeneration().generateReceipt();
 
                 System.out.println(tomato.getQuantity());
 
