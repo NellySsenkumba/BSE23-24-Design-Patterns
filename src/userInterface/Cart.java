@@ -6,6 +6,7 @@ import java.util.Map;
 import org.Product.Product;
 import org.Singleton.ProductCatalog;
 import org.barcodeScanner.BarcodeScanner;
+import org.ReceiptGeneration;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -59,6 +60,10 @@ public class Cart {
             checkout.setStyle("-fx-font-size: 16; -fx-background-color: #0B662E; -fx-text-fill: white;");
             checkout.setOnAction(e -> {
                 // print receipt
+                ReceiptGeneration receipt = new ReceiptGeneration();
+                receipt.generateReceipt();
+                cart.detachAllProducts();
+
             });
             box.getChildren().addAll(grid, checkout, scan(layout));
         } else {

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.Product.Product;
+import org.productFactory.MyProductFactory;
 
 public class BarcodeScanner implements BarcodeSubject {
     private Map<String, Product> invetoryList = new HashMap<>(); // inventory
@@ -11,6 +12,8 @@ public class BarcodeScanner implements BarcodeSubject {
     public static BarcodeScanner instance = null;
 
     private BarcodeScanner() {
+        // products initialy in the invetory
+        this.attach(new MyProductFactory().create("Electronic", "Television", 3000000, "hisense", 8, "1"));
 
     }
 

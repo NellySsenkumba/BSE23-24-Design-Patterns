@@ -1,4 +1,7 @@
 package org;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Map;
 
 import org.Product.Product;
@@ -7,11 +10,11 @@ import org.Singleton.ProductCatalog;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-class ReceiptGeneration {
+public class ReceiptGeneration {
     ProductCatalog cart = ProductCatalog.getInstance();
     Map<String, Product> purchased = cart.getAllProducts();
 
-    void generateReceipt() {
+    public void generateReceipt() {
         Gson gson = new Gson();
         JsonObject jsonObject = new JsonObject();
 
@@ -25,6 +28,11 @@ class ReceiptGeneration {
             jsonObject.addProperty("Unit Price", pdt.getPrice());
             jsonObject.addProperty("Sub Total", subTotal);
             String json = gson.toJson(jsonObject);
+            try (FileWriter file = new FileWriter("receipt.json")) {
+                file.write(json.toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.out.println(json);
 
         }
