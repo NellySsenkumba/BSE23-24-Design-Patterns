@@ -26,6 +26,8 @@ import javafx.scene.text.Text;
 public class Cart {
     ProductCatalog cart = ProductCatalog.getInstance();
     BarcodeScanner obj = BarcodeScanner.getInstance();
+    int expressShippingSet;
+    int giftWrappingSet;
 
     public VBox viewCart(BorderPane layout) {
         VBox box = new VBox();
@@ -100,6 +102,14 @@ public class Cart {
         gridPane.add(decorate, 0, 3);
         CheckBox expressShiping = new CheckBox("Express Shipping");
         CheckBox giftWrapping = new CheckBox("Gift Wrapping");
+
+        // setting the values of the checkboxws
+        expressShiping.setOnAction(e -> {
+            expressShippingSet = 1;
+        });
+        giftWrapping.setOnAction(e -> {
+            giftWrappingSet = 1;
+        });
 
         HBox root = new HBox();
         root.getChildren().addAll(expressShiping, giftWrapping);

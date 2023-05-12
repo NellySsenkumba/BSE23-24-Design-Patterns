@@ -14,6 +14,8 @@ public class BarcodeScanner implements BarcodeSubject {
     private BarcodeScanner() {
         // products initialy in the invetory
         this.attach(new MyProductFactory().create("Electronic", "Television", 3000000, "hisense", 8, "1"));
+        this.attach(new MyProductFactory().create("Electronic", "Watches", 150000, "galaxy watch", 10, "2"));
+        this.attach(new MyProductFactory().create("Groceries", "Tomatoes", 500, "fresh", 500, "3"));
 
     }
 
