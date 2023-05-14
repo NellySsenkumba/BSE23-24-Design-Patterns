@@ -17,6 +17,7 @@ public class BarcodeScanner implements BarcodeSubject {
 
     public static BarcodeScanner getInstance() {
         if (instance == null) {
+            new MyProductFactory().create(null, null, 0, null, 0, null);
             instance = new BarcodeScanner();
 
             // initial products in inventory

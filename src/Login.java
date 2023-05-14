@@ -28,7 +28,7 @@ public class Login extends Application {
     }
 
     private boolean isValidCredentials(String username, String password) {
-        if (username.equals("Joe") && password.equals("1234")) {
+        if (username.equals("Nelson") && password.equals("1234")) {
             role = "Admin";
             return true;
         } else if (username.equals("Aaron") && password.equals("1234")) {
