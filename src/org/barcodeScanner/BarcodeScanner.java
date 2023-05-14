@@ -12,16 +12,20 @@ public class BarcodeScanner implements BarcodeSubject {
     public static BarcodeScanner instance = null;
 
     private BarcodeScanner() {
-        // products initialy in the invetory
-        this.attach(new MyProductFactory().create("Electronic", "Television", 3000000, "hisense", 8, "1"));
-        this.attach(new MyProductFactory().create("Electronic", "Watches", 150000, "galaxy watch", 10, "2"));
-        this.attach(new MyProductFactory().create("Groceries", "Tomatoes", 500, "fresh", 500, "3"));
 
     }
 
     public static BarcodeScanner getInstance() {
         if (instance == null) {
             instance = new BarcodeScanner();
+
+            // initial products in inventory
+            new MyProductFactory().create("CLOTHINGS", "Hijab", 50000, "white", 59, "1");
+            new MyProductFactory().create("Groceries", "Tomato", 500, "fresh", 50, "2");
+            new MyProductFactory().create("Electronic", "Television", 500000, "Hisense 32 inch", 20, "3");
+            new MyProductFactory().create("Electronic", "Fridge", 3000000, "hisense", 8, "4");
+            new MyProductFactory().create("Electronic", "Watches", 150000, "galaxy watch", 10, "5");
+            new MyProductFactory().create("Groceries", "Onions", 200, "big", 500, "6");
         }
 
         return instance;
